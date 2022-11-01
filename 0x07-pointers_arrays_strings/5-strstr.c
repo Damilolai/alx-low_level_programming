@@ -22,7 +22,7 @@ night2++;
 }
 if (*night2 == '\0')
 return (night1);
-aystack = night1 + 1;
+haystack = night1 + 1;
 }
 return (0);
 
