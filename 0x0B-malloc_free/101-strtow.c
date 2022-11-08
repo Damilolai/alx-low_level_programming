@@ -29,98 +29,50 @@ return (num);
 
 }
 
-
-
 /**
+ * strtow - convert input str into a double string
+ * @str: string to separate
  *
- *   * strtow - convert input str into a double string
- *
- *     * @str: string to separate
- *
- *       *
- *
- *         * Return: double pointer to the words on success, null if fail
- *
- *           */
-
-
+ * Return: double pointer to the words on success, null if fail
+ */
 
 char **strtow(char *str)
-
 {
-
-		char *cpy, **words;
-
-			int i = 0, j = 0, len = 0, total = 0;
-
-
-
-				if (str == 0 || *str == 0)
-
-							return (NULL);
-
-					total = wordcount(str);
-
-						if (total == 0)
-
-									return (NULL);
-
-							words = malloc(sizeof(char *) * (total + 1));
-
-								if (words == NULL)
-
-											return (NULL);
-
-									while (*str && i < total)
-
-											{
-
-														if (*str == ' ')
-
-																		str++;
-
-																else
-
-																			{
-
-																							cpy = str;
-
-																										while (*str != ' ' && *str)
-
-																														{
-
-																																			len++;
-
-																																							str++;
-
-																																										}
-
-																													words[i] = malloc(sizeof(char) * (len + 1));
-
-																																while (*cpy != ' ' && *cpy)
-
-																																				{
-
-																																									words[i][j] = *cpy;
-
-																																													cpy++;
-
-																																																	j++;
-
-																																																				}
-
-																																			words[i][j] = '\0';
-
-																																						i++;
-
-																																									j = 0;
-
-																																												len = 0;
-
-																																														}
-
-																	}
-
-										return (words);
+char *cpy, **words;
+int i = 0, j = 0, len = 0, total = 0;
+if (str == 0 || *str == 0)
+return (NULL);
+total = wordcount(str);
+if (total == 0)
+return (NULL);
+words = malloc(sizeof(char *) * (total + 1));
+if (words == NULL)
+return (NULL);
+while (*str && i < total)
+{
+if (*str == ' ')
+str++;
+else
+{
+cpy = str;
+while (*str != ' ' && *str)
+{
+len++;
+str++;
+}
+words[i] = malloc(sizeof(char) * (len + 1));
+while (*cpy != ' ' && *cpy)
+{
+words[i][j] = *cpy;
+cpy++;
+j++;
+}
+words[i][j] = '\0';
+i++;
+j = 0;
+len = 0;
+}
+}
+return (words);
 
 }
